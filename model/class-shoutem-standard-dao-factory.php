@@ -17,32 +17,32 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once "class-shoutem-posts-comments-dao.php";
-require_once "class-shoutem-posts-dao.php";
-require_once "class-shoutem-users-dao.php";
-require_once "class-shoutem-events-dao.php";
-require_once "class-shoutem-photos-dao.php";
-require_once "class-shoutem-ngg-dao.php";
-require_once "class-shoutem-flagallery-dao.php";
-require_once "class-shoutem-smg-dao.php";
-require_once "class-shoutem-podpress-dao.php";
-require_once "class-shoutem-powerpress-dao.php";
-require_once "class-shoutem-viper-dao.php";
-require_once "class-shoutem-twitterembed-dao.php";
-require_once "class-shoutem-brightcoveembed-dao.php";
-require_once "class-shoutem-protectediframe-dao.php";
-require_once "class-shoutem-embedoverrides-dao.php";
+require_once 'class-shoutem-posts-comments-dao.php';
+require_once 'class-shoutem-posts-dao.php';
+require_once 'class-shoutem-users-dao.php';
+require_once 'class-shoutem-events-dao.php';
+require_once 'class-shoutem-photos-dao.php';
+require_once 'class-shoutem-ngg-dao.php';
+require_once 'class-shoutem-flagallery-dao.php';
+require_once 'class-shoutem-smg-dao.php';
+require_once 'class-shoutem-podpress-dao.php';
+require_once 'class-shoutem-powerpress-dao.php';
+require_once 'class-shoutem-viper-dao.php';
+require_once 'class-shoutem-twitterembed-dao.php';
+require_once 'class-shoutem-brightcoveembed-dao.php';
+require_once 'class-shoutem-protectediframe-dao.php';
+require_once 'class-shoutem-embedoverrides-dao.php';
 
 class ShoutemStandardDaoFactory {
-	
+
 	function __construct() {
 		$this->posts_dao = new ShoutemPostsDao();
 		$this->posts_comments_dao = new ShoutemPostsCommentsDao();
 		$this->users_dao = new ShoutemUsersDao();
 		$this->events_dao = new ShoutemEventsDao();
 		$this->photos_dao = new ShoutemPhotosDao();
-		
-		$this->ngg_dao = new ShoutemNGGDao();		
+
+		$this->ngg_dao = new ShoutemNGGDao();
 		$this->flagallery_dao = new ShoutemFlaGalleryDao();
 		$this->smg_dao = new ShoutemSMGDao();
 		$this->podpress_dao = new ShoutemPodpressDao();
@@ -53,7 +53,7 @@ class ShoutemStandardDaoFactory {
 		$this->protectediframe_embed_dao = new ShoutemProtectedIframeEmbedDao();
 		$this->embedoverrides_dao = new ShoutemEmbedOverridesDao();
 		$this->plugin_integration_daos = array(
-			$this->ngg_dao, 
+			$this->ngg_dao,
 			$this->flagallery_dao,
 			$this->smg_dao,
 			$this->podpress_dao,
@@ -62,42 +62,42 @@ class ShoutemStandardDaoFactory {
 			$this->twitter_embed_dao,
 			$this->brightcove_embed_dao,
 			$this->protectediframe_embed_dao,
-			$this->embedoverrides_dao
+			$this->embedoverrides_dao,
 		);
-		
+
 	}
-	
+
 	static public function instance() {
 		static $instance = null;
-		if ($instance == null) {
+		if ( $instance == null ) {
 			$instance = new ShoutemStandardDaoFactory();
 		}
 		return $instance;
 	}
-	
+
 	function get_external_plugin_integration_daos() {
 		return $this->plugin_integration_daos;
 	}
-	
+
 	function get_photos_dao() {
 		return $this->photos_dao;
 	}
-	
+
 	function get_events_dao() {
 		return $this->events_dao;
 	}
-	
+
 	function get_posts_dao() {
 		return $this->posts_dao;
 	}
-	
+
 	function get_posts_comments_dao() {
-		return $this->posts_comments_dao; 
+		return $this->posts_comments_dao;
 	}
-	
+
 	function get_users_dao() {
 		return $this->users_dao;
 	}
 }
 
-?>
+
