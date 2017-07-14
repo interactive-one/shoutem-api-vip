@@ -5,8 +5,8 @@
 class ShoutemFlaGalleryDao extends ShoutemDao {
 
 	function attach_to_hooks() {
-		remove_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
-		add_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
+		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
+		add_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
 		$this->attach_to_shortcodes();
 	}
 
@@ -122,19 +122,19 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 		if ( isset( $GLOBALS['flagdb'] ) ) {
 
 			remove_shortcode( 'flagallery' );
-			add_shortcode( 'flagallery', array( &$this, 'shortcode_flagallery' ) );
+			add_shortcode( 'flagallery', array( $this, 'shortcode_flagallery' ) );
 
 			// FlaGallery video just remove for now.
 			remove_shortcode( 'grandflv' );
-			add_shortcode( 'grandflv', array( &$this, 'shortcode_noop' ) );
+			add_shortcode( 'grandflv', array( $this, 'shortcode_noop' ) );
 			remove_shortcode( 'grandvideo' );
-			add_shortcode( 'grandvideo', array( &$this, 'shortcode_noop' ) );
+			add_shortcode( 'grandvideo', array( $this, 'shortcode_noop' ) );
 
 			// FlaGallery mp3 support
 			remove_shortcode( 'grandmp3' );
-			add_shortcode( 'grandmp3', array( &$this, 'shortcode_grandmp3' ) );
+			add_shortcode( 'grandmp3', array( $this, 'shortcode_grandmp3' ) );
 			remove_shortcode( 'grandmusic' );
-			add_shortcode( 'grandmusic', array( &$this, 'shortcode_grandmusic' ) );
+			add_shortcode( 'grandmusic', array( $this, 'shortcode_grandmusic' ) );
 		}
 	}
 

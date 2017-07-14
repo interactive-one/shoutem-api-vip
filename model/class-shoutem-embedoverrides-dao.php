@@ -8,14 +8,14 @@ require_once 'dao-util.php';
 class ShoutemEmbedOverridesDao extends ShoutemPostsDao {
 
 	function attach_to_hooks() {
-		remove_filter( 'shoutem_twitter', array( &$this, 'shoutem_twitter_callback' ), 10 );
-		add_filter( 'shoutem_twitter', array( &$this, 'shoutem_twitter_callback' ), 10 );
+		remove_filter( 'shoutem_twitter', array( $this, 'shoutem_twitter_callback' ), 10 );
+		add_filter( 'shoutem_twitter', array( $this, 'shoutem_twitter_callback' ), 10 );
 
-		remove_filter( 'shoutem_instagram', array( &$this, 'shoutem_instagram_callback' ), 10 );
-	   	add_filter( 'shoutem_instagram', array( &$this, 'shoutem_instagram_callback' ), 10 );
+		remove_filter( 'shoutem_instagram', array( $this, 'shoutem_instagram_callback' ), 10 );
+	   	add_filter( 'shoutem_instagram', array( $this, 'shoutem_instagram_callback' ), 10 );
 
-		remove_filter( 'shoutem_brightcove_link', array( &$this, 'shoutem_brightcove_callback' ), 10 );
-	   	add_filter( 'shoutem_brightcove_link', array( &$this, 'shoutem_brightcove_callback' ), 10 );
+		remove_filter( 'shoutem_brightcove_link', array( $this, 'shoutem_brightcove_callback' ), 10 );
+	   	add_filter( 'shoutem_brightcove_link', array( $this, 'shoutem_brightcove_callback' ), 10 );
 	}
 
 	/**

@@ -21,8 +21,8 @@ class ShoutemApiCaching {
 	public function __construct( $options ) {
 		$this->options = $options;
 		// action that gets called when a post gets published
-		add_action( 'publish_post', array( &$this, 'on_post_published' ), -9999 );
-		add_action( 'shoutem_save_options', array( &$this, 'on_save_options' ), -9999 );
+		add_action( 'publish_post', array( $this, 'on_post_published' ), -9999 );
+		add_action( 'shoutem_save_options', array( $this, 'on_save_options' ), -9999 );
 		$this->all_keys_uid = 'se-cache-all-keys';
 	}
 

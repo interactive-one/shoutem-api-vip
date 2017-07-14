@@ -8,8 +8,8 @@ require_once 'dao-util.php';
 class ShoutemSMGDao extends ShoutemDao {
 
 	function attach_to_hooks() {
-		remove_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
-		add_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
+		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
+		add_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
 		$this->attach_to_shortcodes();
 	}
 
@@ -19,7 +19,7 @@ class ShoutemSMGDao extends ShoutemDao {
 
 	public function attach_to_shortcodes() {
 		remove_shortcode( 'shoutemsmgallery' );
-		add_shortcode( 'shoutemsmgallery', array( &$this, 'shortcode_smgallery' ) );
+		add_shortcode( 'shoutemsmgallery', array( $this, 'shortcode_smgallery' ) );
 	}
 
 	/**

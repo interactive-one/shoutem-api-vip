@@ -13,13 +13,13 @@ class ShoutemBrightcoveEmbedDao extends ShoutemDao {
 
 	public function attach_to_shortcodes() {
 		remove_shortcode( 'shoutembrightcoveembed' );
-		add_shortcode( 'shoutembrightcoveembed', array( &$this, 'shortcode_brightcoveembed' ) );
+		add_shortcode( 'shoutembrightcoveembed', array( $this, 'shortcode_brightcoveembed' ) );
 
 		remove_shortcode( 'shoutembrightcovesimple' );
-		add_shortcode( 'shoutembrightcovesimple', array( &$this, 'shortcode_brightcovesimple' ) );
+		add_shortcode( 'shoutembrightcovesimple', array( $this, 'shortcode_brightcovesimple' ) );
 
 		remove_shortcode( 'shoutemwpcomwidgetembed' );
-		add_shortcode( 'shoutemwpcomwidgetembed', array( &$this, 'shortcode_wpcomwidgetembed' ) );
+		add_shortcode( 'shoutemwpcomwidgetembed', array( $this, 'shortcode_wpcomwidgetembed' ) );
 	}
 
 	/**

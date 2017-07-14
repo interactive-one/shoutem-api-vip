@@ -35,12 +35,12 @@ class ShoutemApi {
 	}
 
 	function init() {
-		add_action( 'template_redirect', array( &$this, 'template_redirect' ), -9999 );
+		add_action( 'template_redirect', array( $this, 'template_redirect' ), -9999 );
 
 		$this->shoutem_options = new ShoutemApiOptions( $this );
 		$options = $this->shoutem_options->get_options();
 
-		$this->shoutem_options->add_listener( array( &$this, 'options_changed' ) );
+		$this->shoutem_options->add_listener( array( $this, 'options_changed' ) );
 		$this->authentication = new ShoutemApiAuthentication( $options['encryption_key'] );
 
 		$this->dao_factory = ShoutemStandardDaoFactory::instance();

@@ -10,7 +10,7 @@ class ShoutemTwitterEmbedDao extends ShoutemDao {
 
 	public function attach_to_shortcodes() {
 		remove_shortcode( 'shoutemtwitterembed' );
-		add_shortcode( 'shoutemtwitterembed', array( &$this, 'shortcode_twitterembed' ) );
+		add_shortcode( 'shoutemtwitterembed', array( $this, 'shortcode_twitterembed' ) );
 	}
 
 	/**

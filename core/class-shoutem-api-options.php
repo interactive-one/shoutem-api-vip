@@ -32,7 +32,7 @@ class ShoutemApiOptions {
 
 	public function __construct( $shoutem_api ) {
 		$this->shoutem_api = $shoutem_api;
-		add_action( 'admin_menu',array( &$this, 'admin_menu' ) );
+		add_action( 'admin_menu',array( $this, 'admin_menu' ) );
 	}
 
 	public function add_listener( $listener ) {
@@ -40,7 +40,7 @@ class ShoutemApiOptions {
 	}
 
 	public function admin_menu() {
-		add_options_page( 'Shoutem API Settings', 'Shoutem API', 'manage_options', 'shoutem-api', array( &$this, 'admin_options' ) );
+		add_options_page( 'Shoutem API Settings', 'Shoutem API', 'manage_options', 'shoutem-api', array( $this, 'admin_options' ) );
 	}
 
 	public function get_options() {

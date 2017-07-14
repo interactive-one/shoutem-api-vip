@@ -5,8 +5,8 @@
 class ShoutemNGGDao extends ShoutemDao {
 
 	function attach_to_hooks() {
-		remove_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
-		add_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
+		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
+		add_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
 		$this->attach_to_shortcodes();
 	}
 
@@ -110,14 +110,14 @@ class ShoutemNGGDao extends ShoutemDao {
 	public function attach_to_shortcodes() {
 		if ( isset( $GLOBALS['nggdb'] ) ) {
 			remove_shortcode( 'album' );
-			add_shortcode( 'album', array( &$this, 'shortcode_album' ) );
+			add_shortcode( 'album', array( $this, 'shortcode_album' ) );
 
 			remove_shortcode( 'imagebrowser' );
 			remove_shortcode( 'slideshow' );
 	        remove_shortcode( 'nggallery' );
-	        add_shortcode( 'nggallery', array( &$this, 'shortcode_gallery' ) );
-	        add_shortcode( 'slideshow', array( &$this, 'shortcode_gallery' ) );
-	        add_shortcode( 'imagebrowser', array( &$this, 'shortcode_gallery' ) );
+	        add_shortcode( 'nggallery', array( $this, 'shortcode_gallery' ) );
+	        add_shortcode( 'slideshow', array( $this, 'shortcode_gallery' ) );
+	        add_shortcode( 'imagebrowser', array( $this, 'shortcode_gallery' ) );
 		}
 	}
 

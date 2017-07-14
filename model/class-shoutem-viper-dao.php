@@ -21,10 +21,10 @@ class ShoutemViperDao extends ShoutemDao {
 	public function attach_to_hooks() {
 		if ( isset( $GLOBALS['VipersVideoQuicktags'] ) ) {
 			remove_shortcode( 'youtube' );
-			add_shortcode( 'youtube', array( &$this, 'shortcode_youtube' ) );
+			add_shortcode( 'youtube', array( $this, 'shortcode_youtube' ) );
 
 			remove_shortcode( 'vimeo' );
-			add_shortcode( 'vimeo', array( &$this, 'shortcode_vimeo' ) );
+			add_shortcode( 'vimeo', array( $this, 'shortcode_vimeo' ) );
 
 			remove_shortcode( 'quicktime' );
 			remove_shortcode( 'flash' );
@@ -34,16 +34,16 @@ class ShoutemViperDao extends ShoutemDao {
 			remove_shortcode( 'mpeg' );
 			remove_shortcode( 'wmv' );
 
-			add_shortcode( 'quicktime', array( &$this, 'shortcode_viper_generic' ) );
-			add_shortcode( 'flash', array( &$this, 'shortcode_viper_generic' ) );
-			add_shortcode( 'videofile', array( &$this, 'shortcode_viper_generic' ) );
-			add_shortcode( 'video', array( &$this, 'shortcode_viper_generic' ) );
-			add_shortcode( 'avi', array( &$this, 'shortcode_viper_generic' ) );
-			add_shortcode( 'mpeg', array( &$this, 'shortcode_viper_generic' ) );
-			add_shortcode( 'wmv', array( &$this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'quicktime', array( $this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'flash', array( $this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'videofile', array( $this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'video', array( $this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'avi', array( $this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'mpeg', array( $this, 'shortcode_viper_generic' ) );
+			add_shortcode( 'wmv', array( $this, 'shortcode_viper_generic' ) );
 		}
-		remove_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
-		add_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
+		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
+		add_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
 	}
 
 	public function on_shoutem_post_start( $params ) {

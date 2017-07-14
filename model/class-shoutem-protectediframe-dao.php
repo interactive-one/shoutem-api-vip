@@ -14,15 +14,15 @@ class ShoutemProtectedIframeEmbedDao extends ShoutemDao {
 
 	public function attach_to_shortcodes() {
 		remove_shortcode( 'protected-iframe' );
-		add_shortcode( 'protected-iframe', array( &$this, 'shortcode_protectediframe' ) );
+		add_shortcode( 'protected-iframe', array( $this, 'shortcode_protectediframe' ) );
 		remove_shortcode( 'vc_row' );
-		add_shortcode( 'vc_row', array( &$this, 'shortcode_shoutem_vc_row' ) );
+		add_shortcode( 'vc_row', array( $this, 'shortcode_shoutem_vc_row' ) );
 		remove_shortcode( 'vc_column' );
-		add_shortcode( 'vc_column', array( &$this, 'shortcode_shoutem_vc_column' ) );
+		add_shortcode( 'vc_column', array( $this, 'shortcode_shoutem_vc_column' ) );
 		remove_shortcode( 'vc_column_text' );
-		add_shortcode( 'vc_column_text', array( &$this, 'shortcode_shoutem_vc_column_text' ) );
+		add_shortcode( 'vc_column_text', array( $this, 'shortcode_shoutem_vc_column_text' ) );
 		remove_shortcode( 'vc_video' );
-		add_shortcode( 'vc_video', array( &$this, 'shortcode_shoutem_vc_video' ) );
+		add_shortcode( 'vc_video', array( $this, 'shortcode_shoutem_vc_video' ) );
 	}
 
 	/**

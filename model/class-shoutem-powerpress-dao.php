@@ -21,8 +21,8 @@ class ShoutemPowerpressDao extends ShoutemDao {
 
 	public function attach_to_hooks() {
 		remove_filter( 'the_content', 'powerpress_content' );
-		remove_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
-		add_action( 'shoutem_get_post_start',array( &$this, 'on_shoutem_post_start' ) );
+		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
+		add_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );
 	}
 
 	public function on_shoutem_post_start( $params ) {
