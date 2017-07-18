@@ -3,7 +3,7 @@
  * This class is designed to work with SMG gallery output (USA Today specific) wrapped in our own shortcode
  */
 
-require_once 'dao-util.php';
+require_once plugin_dir_path( __FILE__ ) . 'dao-util.php';
 
 class ShoutemSMGDao extends ShoutemDao {
 
