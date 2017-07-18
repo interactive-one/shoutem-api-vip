@@ -172,7 +172,7 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 
 		global $flagdb;
 
-		extract(shortcode_atts(array(
+		$atts = shortcode_atts( array(
 			'gid' 		=> '',
 			'album'		=> '',
 			'name'		=> '',
@@ -180,28 +180,30 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 			'order'	 	=> '',
 			'exclude' 	=> '',
 			'se_visible' => 'true',
-		), $atts ));
+		), $atts );
 
-		if ( $se_visible != 'true' ) {
+		if ( 'true' !== $atts['se_visible'] ) {
 			return '';
 		}
 
 		$out = '';
 		// make an array out of the ids
-		if ( $album ) {
-			$gallerylist = $flagdb->get_album( $album );
+		if ( $atts['album'] ) {
+			$gallerylist = $flagdb->get_album( $atts['album'] );
 			$ids = explode( ',', $gallerylist );
 			foreach ( $ids as $id ) {
 				$out .= $this->get_gallery( $flagdb, $id, $this->attachments['images'] );
 			}
-		} elseif ( $gid == 'all' ) {
-			if ( ! $orderby ) { $orderby = 'gid';
+		} elseif ( 'all' === $atts['all'] ) {
+			if ( ! $atts['orderby'] ) {
+				$atts['orderby'] = 'gid';
 			}
-			if ( ! $order ) { $order = 'DESC';
+			if ( ! $atts['order'] ) {
+				$atts['order'] = 'DESC';
 			}
-			$gallerylist = $flagdb->find_all_galleries( $orderby, $order );
+			$gallerylist = $flagdb->find_all_galleries( $atts['orderby'], $atts['order'] );
 			if ( is_array( $gallerylist ) ) {
-				$excludelist = explode( ',',$exclude );
+				$excludelist = explode( ',', $atts['exclude'] );
 				foreach ( $gallerylist as $gallery ) {
 					if ( in_array( $gallery->gid, $excludelist ) ) {
 						continue;
@@ -210,7 +212,7 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 				}
 			}
 		} else {
-			$ids = explode( ',', $gid );
+			$ids = explode( ',', $atts['gid'] );
 
 			foreach ( $ids as $id ) {
 				$out .= $this->get_gallery( $flagdb, $id, $this->attachments['images'] );
@@ -224,13 +226,13 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 	 * FLA Gallery music playlist shortcode
 	 */
 	function shortcode_grandmusic( $atts ) {
-		extract(shortcode_atts(array(
+		$atts = shortcode_atts( array(
 			'playlist'	=> '',
-		), $atts ));
+		), $atts );
 
 		$out = '';
 
-		if ( $playlist ) {
+		if ( $atts['playlist'] ) {
 			$flag_options = get_option( 'flag_options' );
 			$playlist_path = false;
 
@@ -238,9 +240,9 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 				return $out;
 			}
 
-			$playlist_path = $flag_options['galleryPath'] . 'playlists/' . $playlist . '.xml';
+			$playlist_path = $flag_options['galleryPath'] . 'playlists/' . $atts['playlist'] . '.xml';
 
-			if ( ! file_exists( $flag_options['galleryPath'] . 'playlists/' . $playlist . '.xml' ) ) {
+			if ( ! file_exists( $flag_options['galleryPath'] . 'playlists/' . $atts['playlist'] . '.xml' ) ) {
 				return $out;
 			}
 
@@ -272,13 +274,13 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 	 * FLA Gallery music mp3
 	 */
 	function shortcode_grandmp3( $atts ) {
-		extract(shortcode_atts(array(
+		$atts = shortcode_atts( array(
 			'id'	=> '',
-		), $atts ));
+		), $atts );
 		$out = '';
 
-		if ( $id ) {
-			$url = wp_get_attachment_url( $id );
+		if ( $atts['id'] ) {
+			$url = wp_get_attachment_url( $atts['id'] );
 			$url = str_replace( array( '.mp3' ), array( '' ), $url );
 
 			$audio_record = array(
