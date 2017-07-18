@@ -38,10 +38,13 @@ class ShoutemSMGDao extends ShoutemDao {
 	}
 
 	private function get_gallery( $content, &$images ) {
+		$libxml_previous_state = libxml_use_internal_errors( true );
+
 		$dom = new DOMDocument();
-		// posts don't have a single root, so wrap them
-		// supress warnings caused by HTML5 tags
-		@$dom->loadHTML( $content );
+		$dom->loadHTML( $content );
+
+		libxml_clear_errors();
+		libxml_use_internal_errors( $libxml_previous_state );
 
 		$xpath = new DOMXPath( $dom );
 		$gallery_node = $xpath->query( "//*[@id='SMG_PhotoGallery']" )->item( 0 );

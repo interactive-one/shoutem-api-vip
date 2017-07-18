@@ -26,17 +26,22 @@ class ShoutemEmbedOverridesDao extends ShoutemPostsDao {
 			$url = $matches[0];
 			$instagram_oembed_url = 'https://api.instagram.com/oembed/?omitscript=true&url=' . $url;
 			if ( function_exists( 'wpcom_vip_file_get_contents' ) ) {
-				$instagram_post_data = @wpcom_vip_file_get_contents( $instagram_oembed_url );
+				$instagram_post_data = wpcom_vip_file_get_contents( $instagram_oembed_url );
 			} else {
-				$instagram_post_data = @file_get_contents( $instagram_oembed_url );
+				$response = wp_remote_get( $instagram_oembed_url );
+				if ( is_array( $response ) && ! is_wp_error( $response ) ) {
+					$instagram_post_data = $response['body'];
+				}
 			}
 
-			if ( ! $instagram_post_data ) { return ''; // nothing retrieved from instagram
+			if ( ! $instagram_post_data ) {
+				return ''; // nothing retrieved from instagram
 			}
 
 			$parsed_post_data = json_decode( $instagram_post_data, true );
 
-			if ( ! $parsed_post_data ) { return ''; // unable to parse json above
+			if ( ! $parsed_post_data ) {
+				return ''; // unable to parse json above
 			}
 
 			$image_src = $parsed_post_data['thumbnail_url'];
@@ -68,12 +73,16 @@ class ShoutemEmbedOverridesDao extends ShoutemPostsDao {
 			$oembedUrl = 'https://publish.twitter.com/oembed?omit_script=true&widget_type=video&url=' . urlencode( $url );
 
 			if ( function_exists( 'wpcom_vip_file_get_contents' ) ) {
-				@$twitter_post_raw = wpcom_vip_file_get_contents( $oembedUrl, 3, 900 );
+				$twitter_post_raw = wpcom_vip_file_get_contents( $oembedUrl, 3, 900 );
 			} else {
-				@$twitter_post_raw = file_get_contents( $oembedUrl );
+				$response = wp_remote_get( $oembedUrl );
+				if ( is_array( $response ) && ! is_wp_error( $response ) ) {
+					$twitter_post_raw = $response['body'];
+				}
 			}
 
-			if ( ! $twitter_post_raw ) { return $fallbackContent;
+			if ( ! $twitter_post_raw ) {
+				return $fallbackContent;
 			}
 
 			$twitter_post = json_decode( $twitter_post_raw, true );
@@ -83,8 +92,11 @@ class ShoutemEmbedOverridesDao extends ShoutemPostsDao {
 
 			$author = $twitter_post['author_name'];
 
+			$libxml_previous_state = libxml_use_internal_errors( true );
 			$dom = new DOMDocument;
-			@$dom->loadHTML( $twitter_post['html'] );
+			$dom->loadHTML( $twitter_post['html'] );
+			libxml_clear_errors();
+			libxml_use_internal_errors( $libxml_previous_state );
 			$content = $dom->saveHTML( $dom->getElementsByTagName( 'p' )->item( 0 ) );
 
 			$post_text = '<b>' . $author . '</b> on Twitter: ';
