@@ -194,7 +194,7 @@ class ShoutemFlaGalleryDao extends ShoutemDao {
 			foreach ( $ids as $id ) {
 				$out .= $this->get_gallery( $flagdb, $id, $this->attachments['images'] );
 			}
-		} elseif ( 'all' === $atts['all'] ) {
+		} elseif ( 'all' === $atts['gid'] ) {
 			if ( ! $atts['orderby'] ) {
 				$atts['orderby'] = 'gid';
 			}
