@@ -4,7 +4,7 @@
  * Also contains basic parser for Visual Composer plugin
  */
 
-require_once 'dao-util.php';
+require_once plugin_dir_path( __FILE__ ) . 'dao-util.php';
 
 class ShoutemProtectedIframeEmbedDao extends ShoutemDao {
 

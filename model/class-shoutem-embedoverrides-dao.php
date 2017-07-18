@@ -3,7 +3,7 @@
  * This class is designed to override default instagram, twitter, brightcove embedding to be compatible with shoutem
  */
 
-require_once 'dao-util.php';
+require_once plugin_dir_path( __FILE__ ) . 'dao-util.php';
 
 class ShoutemEmbedOverridesDao extends ShoutemPostsDao {
 

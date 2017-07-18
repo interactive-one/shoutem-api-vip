@@ -1,6 +1,6 @@
 <?php
-	require_once 'class-shoutem-events-calendar-dao.php';
-require_once 'class-shoutem-events-manager-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-events-calendar-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-events-manager-dao.php';
 
 	/**
 	 * Multiplexed State pattern. See this->providers for a list of states.

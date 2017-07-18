@@ -17,8 +17,8 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once 'class-shoutem-ngg-dao.php';
-require_once 'class-shoutem-flagallery-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-ngg-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-flagallery-dao.php';
 
 
 class ShoutemPhotosDao extends ShoutemDao {

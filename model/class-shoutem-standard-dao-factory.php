@@ -17,21 +17,21 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once 'class-shoutem-posts-comments-dao.php';
-require_once 'class-shoutem-posts-dao.php';
-require_once 'class-shoutem-users-dao.php';
-require_once 'class-shoutem-events-dao.php';
-require_once 'class-shoutem-photos-dao.php';
-require_once 'class-shoutem-ngg-dao.php';
-require_once 'class-shoutem-flagallery-dao.php';
-require_once 'class-shoutem-smg-dao.php';
-require_once 'class-shoutem-podpress-dao.php';
-require_once 'class-shoutem-powerpress-dao.php';
-require_once 'class-shoutem-viper-dao.php';
-require_once 'class-shoutem-twitterembed-dao.php';
-require_once 'class-shoutem-brightcoveembed-dao.php';
-require_once 'class-shoutem-protectediframe-dao.php';
-require_once 'class-shoutem-embedoverrides-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-posts-comments-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-posts-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-users-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-events-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-photos-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-ngg-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-flagallery-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-smg-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-podpress-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-powerpress-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-viper-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-twitterembed-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-brightcoveembed-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-protectediframe-dao.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-embedoverrides-dao.php';
 
 class ShoutemStandardDaoFactory {
 

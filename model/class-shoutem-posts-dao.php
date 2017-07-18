@@ -19,7 +19,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once 'dao-util.php';
+require_once plugin_dir_path( __FILE__ ) . 'dao-util.php';
 
 class ShoutemPostsDao extends ShoutemDao {
 
