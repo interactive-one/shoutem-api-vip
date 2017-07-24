@@ -16,54 +16,54 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-function dao_util_get_summary($content) {
+function dao_util_get_summary( $content ) {
 	$sumary_size = 20;
-	if(strlen($content) > $sumary_size) {
-		return substr($content, 0, 20).'...'; 
+	if ( strlen( $content ) > $sumary_size ) {
+		return substr( $content, 0, 20 ) . '...';
 	}
 	return $content;
 }
 
 
-function dao_util_paginate($unpaginated_data,$options) {
+function dao_util_paginate( $unpaginated_data, $options ) {
 
-	$paginated_data = array();	
-	$offset = (int)$options['offset'];
-	$limit = (int)$options['limit'];
-	
+	$paginated_data = array();
+	$offset = (int) $options['offset'];
+	$limit = (int) $options['limit'];
+
 	$pagination_meta = array();
-	
-	if($offset > 0) {
-		$previous_offset = max(0, $offset-$limit);
+
+	if ( $offset > 0 ) {
+		$previous_offset = max( 0, $offset -$limit );
 		$previous_limit = $limit;
 		$pagination_meta['previous'] = http_build_query(
-			array_merge($_REQUEST,array('limit'=>$previous_limit,'offset'=>$previous_offset))
-			);
+			array_merge( $_REQUEST,array( 'limit' => $previous_limit, 'offset' => $previous_offset ) )
+		);
 	}
-	
-	$last_element_index = $offset + $limit; 
-	if($last_element_index < count($unpaginated_data)) {
+
+	$last_element_index = $offset + $limit;
+	if ( $last_element_index < count( $unpaginated_data ) ) {
 		$next_offset = $offset + $limit;
 		$next_limit = $limit;
 		$pagination_meta['next'] = http_build_query(
-			array_merge($_REQUEST,array('limit'=>$next_limit,'offset'=>$next_offset))
-			);
+			array_merge( $_REQUEST,array( 'limit' => $next_limit, 'offset' => $next_offset ) )
+		);
 	}
-	$paginated_data['data'] = array_slice($unpaginated_data, $offset, $limit);
+	$paginated_data['data'] = array_slice( $unpaginated_data, $offset, $limit );
 	$paginated_data['paging'] = $pagination_meta;
 	return $paginated_data;
 }
 
-function dao_util_save_html_node($node) {
-	if($node){
+function dao_util_save_html_node( $node ) {
+	if ( $node ) {
 		$fragment_doc = new DomDocument();
 		$fragment = $fragment_doc->createDocumentFragment();
-		$fragment_node = $fragment_doc->importNode($node, true);
-		$fragment->appendChild($fragment_node);
-		$fragment_doc->appendChild($fragment);
-		return trim($fragment_doc->saveHTML());	
+		$fragment_node = $fragment_doc->importNode( $node, true );
+		$fragment->appendChild( $fragment_node );
+		$fragment_doc->appendChild( $fragment );
+		return trim( $fragment_doc->saveHTML() );
 	}
 	return null;
 }
 
-?>
+

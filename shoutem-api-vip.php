@@ -28,7 +28,7 @@ Author URI: http://www.shoutem.com
 function shoutem_api_init() {
 	global $shoutem_api;
 
-	$shoutem_api_dir = dirname(__FILE__);
+	$shoutem_api_dir = dirname( __FILE__ );
 	require_once "$shoutem_api_dir/core/class-shoutem-api-exception.php";
 	require_once "$shoutem_api_dir/core/class-shoutem-api.php";
 	require_once "$shoutem_api_dir/core/class-shoutem-api-encryption.php";
@@ -44,9 +44,9 @@ function shoutem_api_init() {
 	require_once "$shoutem_api_dir/library/aes128.php";
 	require_once "$shoutem_api_dir/library/JSON.php";
 	require_once "$shoutem_api_dir/library/shoutem-sanitizer.php";
-  	$shoutem_api = new ShoutemApi($shoutem_api_dir, __FILE__);
-  	$shoutem_api->init();
+		$shoutem_api = new ShoutemApi( $shoutem_api_dir, __FILE__ );
+		$shoutem_api->init();
 }
 
-add_action('init','shoutem_api_init');
-?>
+add_action( 'init','shoutem_api_init' );
+

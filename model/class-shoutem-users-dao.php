@@ -17,15 +17,15 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemUsersDao {
-	
+
 	function __construct() {
 		$this->session_id_header = 'shoutem_api_session_id';
 	}
-	
-	function get_user($params) {
+
+	function get_user( $params ) {
 		$username = $params['username'];
-		$user = get_user_by('login', $username);
+		$user = get_user_by( 'login', $username );
 		return $user;
 	}
 }
-?>
+

@@ -17,16 +17,16 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemUsersController extends ShoutemController {
-	
+
 	/**
-	 * MAPS_TO: users/authenticate 
+	 * MAPS_TO: users/authenticate
 	 * REQ PARAMS: username, password
 	 */
-    /*
+	/*
      * TODO:    Implement once we define an authentication method acceptable to Wordpress.com VIP
      *
 	function authenticate() {
 	}
     */
 }
-?>
+

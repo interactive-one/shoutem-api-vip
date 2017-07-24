@@ -17,26 +17,26 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemApiException extends Exception {
-	
-	var $shoutem_error_messages = array (
+
+	var $shoutem_error_messages = array(
 		'comment_duplicate_trigger' => 'Comment is duplicate!',
 		'comment_flood_trigger' => 'Slow down, your comments are comming too fast',
 		'comment_delete_error' => 'Comment delete error',
-		'comment_create_error' => 'Error while creating comment'
+		'comment_create_error' => 'Error while creating comment',
 	);
-	
+
 	/**
 	 * message is required param
 	 */
-	public function __construct($message, $code = 0, Exception $previous = null) {
-         parent::__construct($message, $code);
-    }
-    
-    public function get_error_message() {
-    	if(isset($this->shoutem_error_messages[$this->message])) {
-    		return $this->shoutem_error_messages[$this->message];
-    	} 
-    	return $this->message;
-    }
+	public function __construct( $message, $code = 0, Exception $previous = null ) {
+		 parent::__construct( $message, $code );
+	}
+
+	public function get_error_message() {
+		if ( isset( $this->shoutem_error_messages[ $this->message ] ) ) {
+			return $this->shoutem_error_messages[ $this->message ];
+		}
+		return $this->message;
+	}
 }
-?>
+

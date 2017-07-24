@@ -23,35 +23,34 @@ class ShoutemPostsController extends ShoutemController {
 	 * OPT PARAMS: session_id
 	 */
 	function get() {
-		$params = $this->accept_standard_params_and('post_id','include_raw_post');
-		$this->validate_required_params('post_id');
+		$params = $this->accept_standard_params_and( 'post_id','include_raw_post' );
+		$this->validate_required_params( 'post_id' );
 
-
-		$uid = $this->caching->unique_id($this->request->params);
-		$cached = $this->caching->get_cached($uid);
-		if ($cached) {
-			$this->response->send_json($cached);
+		$uid = $this->caching->unique_id( $this->request->params );
+		$cached = $this->caching->get_cached( $uid );
+		if ( $cached ) {
+			$this->response->send_json( $cached );
 		} else {
 			$postsDao = $this->dao_factory->get_posts_dao();
-			$data = $postsDao->get($this->request->params);
+			$data = $postsDao->get( $this->request->params );
 
-			$json_string = $this->view->encode_record_as_json($data);
-			$this->caching->store_to_cache($uid, $json_string);
-			$this->response->send_json($json_string);
+			$json_string = $this->view->encode_record_as_json( $data );
+			$this->caching->store_to_cache( $uid, $json_string );
+			$this->response->send_json( $json_string );
 		}
 	}
 
 	function categories() {
 		$this->accept_standard_params_and();
-		$this->request->use_default_params($this->default_paging_params());
+		$this->request->use_default_params( $this->default_paging_params() );
 		$dao = $this->dao_factory->get_posts_dao();
 
 		$data = $this->caching->use_cache(
-						array($dao,'categories'),
-						$this->request->params
-						);
+			array( $dao,'categories' ),
+			$this->request->params
+		);
 
-		$this->view->show_recordset($data);
+		$this->view->show_recordset( $data );
 	}
 
 	/**
@@ -59,25 +58,25 @@ class ShoutemPostsController extends ShoutemController {
 	 * OPT PARAMS: session_id, category_id, offeset (default 0), limit (default 100)
 	 */
 	function find() {
-		$this->accept_standard_params_and('category_id', 'exclude_categories');
-		$this->request->use_default_params($this->default_paging_params());
+		$this->accept_standard_params_and( 'category_id', 'exclude_categories' );
+		$this->request->use_default_params( $this->default_paging_params() );
 
-		$uid = $this->caching->unique_id($this->request->params);
+		$uid = $this->caching->unique_id( $this->request->params );
 
-		$cached = $this->caching->get_cached($uid);
-		if ($cached) {
-			$this->response->send_json($cached);
+		$cached = $this->caching->get_cached( $uid );
+		if ( $cached ) {
+			$this->response->send_json( $cached );
 		} else {
 
 			$postsDao = $this->dao_factory->get_posts_dao();
-			$result = $postsDao->find($this->request->params);
+			$result = $postsDao->find( $this->request->params );
 
-			$json_string = $this->view->encode_recordset_as_json($result);
-			$this->caching->store_to_cache($uid, $json_string);
-			$this->response->send_json($json_string);
+			$json_string = $this->view->encode_recordset_as_json( $result );
+			$this->caching->store_to_cache( $uid, $json_string );
+			$this->response->send_json( $json_string );
 		}
 
 	}
 }
 
-?>
+
