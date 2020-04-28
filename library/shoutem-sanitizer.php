@@ -47,8 +47,8 @@ function sanitize_html($html, &$attachments = null) {
 
 	$disclaimer_div = "/<(div)(.+?id=(\\\\*([\\\"\\\']))disclaimer\\3.*?)>(.*?)<\/\\1>/si";
 	$filtered_html = preg_replace($disclaimer_div, "<p$2>$5</p>", $filtered_html);
-	
-	$all_tags = "/<(\/)?\s*([\w-_]+)(.*?)(\/)?>/i";
+
+	$all_tags = "/<(\/)?\s*([\w_-]+)(.*?)(\/)?>/i";
 	$filtered_html = preg_replace_callback($all_tags, function($m) { return rename_tag_pre($m[1], $m[2], $m[3], isset($m[4]) ? $m[4] : null); },$filtered_html);
 	//first try wp_kses for removal of html elements
 	if (function_exists('wp_kses')) {

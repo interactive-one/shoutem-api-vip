@@ -24,7 +24,7 @@ class ShoutemApiResponse {
 	}
 
 	function ShoutemApiResponse( $base_url ) {
-		self::__construct();
+		self::__construct( $base_url );
 	}
 
 	function send_json_ok( $data ) {
