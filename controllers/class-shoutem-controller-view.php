@@ -40,7 +40,7 @@ class ShoutemControllerView {
 
 		$email_hash = md5( strtolower( $email ) );
 
-		$host = sprintf( 'http://%d.gravatar.com', ( hexdec( $email_hash{0} ) % 2 ) );
+		$host = sprintf( 'http://%d.gravatar.com', ( hexdec( $email_hash[0] ) % 2 ) );
 
 		if ( 'mystery' == $default ) {
 			$default = "$host/avatar/ad516503a11cd5ca435acc9bb6523536?s={$size}"; // ad516503a11cd5ca435acc9bb6523536 == md5('unknown@gravatar.com')
