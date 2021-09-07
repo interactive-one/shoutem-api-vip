@@ -22,11 +22,10 @@ class ShoutemUsersController extends ShoutemController {
 	 * MAPS_TO: users/authenticate
 	 * REQ PARAMS: username, password
 	 */
-	/*
+    /*
      * TODO:    Implement once we define an authentication method acceptable to Wordpress.com VIP
      *
 	function authenticate() {
 	}
     */
 }
-

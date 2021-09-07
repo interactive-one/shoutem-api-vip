@@ -18,7 +18,7 @@
 */
 class ShoutemApiCredentials {
 
-	function __construct( $data, $session_id ) {
+	function __construct($data,$session_id) {
 		$this->data = $data;
 		$this->session_id = $session_id;
 	}
@@ -30,7 +30,7 @@ class ShoutemApiCredentials {
 	}
 
 	function get_user() {
-		return get_userdata( (int) $this->data['uid'] );
+		return get_userdata((int)$this->data['uid']);
 	}
 
 	function get_data() {
@@ -41,48 +41,47 @@ class ShoutemApiCredentials {
 
 class ShoutemApiAuthentication {
 
-	function __construct( $encryption_key ) {
+	function __construct($encryption_key) {
 		$this->session_id_header = 'shoutem_api_session_id';
-		$this->encryptor = new ShoutemApiEncryption( $encryption_key );
+		$this->encryptor = new ShoutemApiEncryption($encryption_key);
 	}
 
-	function create_session_id( $user ) {
+	function create_session_id($user) {
 		$session_id_data = array(
-			'header'	=> $this->session_id_header,
-			'username'	=> $user->user_login,
-			'password'	=> $user->user_pass,
+			'header'	=>	$this->session_id_header,
+			'username'	=> 	$user->user_login,
+			'password'	=>	$user->user_pass,
 			// 'timestamp'	=>	time()
-			'uid'			=> $user->ID,
+			'uid'			=> $user->ID
 		);
-		$unencrypted_session_id = http_build_query( $session_id_data );
-		return $this->encryptor->encrypt( $unencrypted_session_id );
+		$unencrypted_session_id = http_build_query($session_id_data);
+		return $this->encryptor->encrypt($unencrypted_session_id);
 	}
 
-	function get_credentials( $session_id ) {
-		$unencrypted_session_id = $this->encryptor->decrypt( $session_id );
-		$session_id_data = $this->parse_data_from_session_id( $unencrypted_session_id );
+	function get_credentials($session_id) {
+		$unencrypted_session_id = $this->encryptor->decrypt($session_id);
+		$session_id_data = $this->parse_data_from_session_id($unencrypted_session_id);
 
-		if ( ! isset( $session_id_data['header'] ) || $session_id_data['header'] != $this->session_id_header ) {
+		if(!isset($session_id_data['header']) || $session_id_data['header'] != $this->session_id_header) {
 			return false;
 		}
-		return new ShoutemApiCredentials( $session_id_data,$session_id );
+		return new ShoutemApiCredentials($session_id_data,$session_id);
 	}
 
-	function parse_data_from_session_id( $unencrypted_session_id ) {
-		$exploded_unencrypted_session_id = explode( '&',$unencrypted_session_id );
+	function parse_data_from_session_id($unencrypted_session_id) {
+		$exploded_unencrypted_session_id = explode('&',$unencrypted_session_id);
 		$session_id_data = array();
 
-		foreach ( $exploded_unencrypted_session_id as $keyval_pair ) {
-			$exploded_keyval_pair =	explode( '=',$keyval_pair );
+		foreach($exploded_unencrypted_session_id as $keyval_pair) {
+			$exploded_keyval_pair =	explode('=',$keyval_pair);
 			$key = $exploded_keyval_pair[0];
 			$val = null;
-			if ( count( $exploded_keyval_pair ) > 1 ) {
-				$val = urldecode( $exploded_keyval_pair[1] );
+			if(count($exploded_keyval_pair)>1) {
+				$val = urldecode($exploded_keyval_pair[1]);
 			}
-			$session_id_data[ $key ] = $val;
+			$session_id_data[$key] = $val;
 		}
 		return $session_id_data;
 	}
 
 }
-

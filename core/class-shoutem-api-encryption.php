@@ -19,14 +19,14 @@
 class DummyEncryptor {
 
 	function __construct() {
-		// TODO generate warrning that plain text encription is used!!
+		//TODO generate warrning that plain text encription is used!!
 	}
 
-	function encrypt( $data, $key ) {
+	function encrypt($data, $key) {
 		return $data;
 	}
 
-	function decrypt( $data, $key ) {
+	function decrypt($data, $key) {
 		return $data;
 	}
 }
@@ -36,12 +36,12 @@ class AesEncryptor {
 	function __construct() {
 	}
 
-	function encrypt( $data, $key ) {
-		return SEAesCtr::encrypt( $data, $key, 128 );
+	function encrypt($data, $key) {
+		return SEAesCtr::encrypt($data, $key, 128);
 	}
 
-	function decrypt( $data, $key ) {
-		return SEAesCtr::decrypt( $data, $key, 128 );
+	function decrypt($data, $key) {
+		return SEAesCtr::decrypt($data, $key, 128);
 	}
 }
 
@@ -50,19 +50,19 @@ class MyCryptEncryptor {
 	function __construct() {
 	}
 
-	function encrypt( $text, $key ) {
+	function encrypt($text, $key) {
 		 $data = mcrypt_encrypt( MCRYPT_RIJNDAEL_128, $key, $text, MCRYPT_MODE_ECB, $this->get_iv() );
 		 return base64_encode( $data );
 	}
 
-	function decrypt( $data, $key ) {
+	function decrypt($data, $key) {
 		$data = base64_decode( $data );
-		return mcrypt_decrypt( MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB, $this->get_iv() );
+        return mcrypt_decrypt( MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB, $this->get_iv() );
 	}
 
 	function get_iv() {
-		if ( isset( $this->iv ) == false ) {
-			$ivs = mcrypt_get_iv_size( MCRYPT_RIJNDAEL_128, MCRYPT_MODE_ECB );
+		if (isset($this->iv) == false) {
+			$ivs = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_ECB);
 			$this->iv = mcrypt_create_iv( $ivs );
 		}
 		return $this->iv;
@@ -71,10 +71,10 @@ class MyCryptEncryptor {
 
 class ShoutemApiEncryption {
 
-	function __construct( $key ) {
+	function __construct($key) {
 		$this->key = $key;
 
-		if ( function_exists( 'mcrypt_list_algorithms' ) ) {
+		if(function_exists('mcrypt_list_algorithms')) {
 			$this->encryptor = new MyCryptEncryptor();
 		} else {
 			$this->encryptor = new AesEncryptor();
@@ -82,12 +82,11 @@ class ShoutemApiEncryption {
 
 	}
 
-	function encrypt( $data ) {
-		return $this->encryptor->encrypt( $data,$this->key );
+	function encrypt($data) {
+		return $this->encryptor->encrypt($data,$this->key);
 	}
 
-	function decrypt( $data ) {
-		return $this->encryptor->decrypt( $data,$this->key );
+	function decrypt($data) {
+		return $this->encryptor->decrypt($data,$this->key);
 	}
 }
-
