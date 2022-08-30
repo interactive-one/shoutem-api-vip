@@ -17,7 +17,6 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class DummyEncryptor {
-
 	function __construct() {
 		// TODO generate warrning that plain text encription is used!!
 	}
@@ -32,7 +31,6 @@ class DummyEncryptor {
 }
 
 class AesEncryptor {
-
 	function __construct() {
 	}
 
@@ -45,41 +43,10 @@ class AesEncryptor {
 	}
 }
 
-class MyCryptEncryptor {
-
-	function __construct() {
-	}
-
-	function encrypt( $text, $key ) {
-		 $data = mcrypt_encrypt( MCRYPT_RIJNDAEL_128, $key, $text, MCRYPT_MODE_ECB, $this->get_iv() );
-		 return base64_encode( $data );
-	}
-
-	function decrypt( $data, $key ) {
-		$data = base64_decode( $data );
-		return mcrypt_decrypt( MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB, $this->get_iv() );
-	}
-
-	function get_iv() {
-		if ( isset( $this->iv ) == false ) {
-			$ivs = mcrypt_get_iv_size( MCRYPT_RIJNDAEL_128, MCRYPT_MODE_ECB );
-			$this->iv = mcrypt_create_iv( $ivs );
-		}
-		return $this->iv;
-	}
-}
-
 class ShoutemApiEncryption {
-
 	function __construct( $key ) {
 		$this->key = $key;
-
-		if ( function_exists( 'mcrypt_list_algorithms' ) ) {
-			$this->encryptor = new MyCryptEncryptor();
-		} else {
-			$this->encryptor = new AesEncryptor();
-		}
-
+		$this->encryptor = new AesEncryptor();
 	}
 
 	function encrypt( $data ) {
@@ -90,4 +57,3 @@ class ShoutemApiEncryption {
 		return $this->encryptor->decrypt( $data,$this->key );
 	}
 }
-

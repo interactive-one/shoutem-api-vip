@@ -87,13 +87,13 @@ class ShoutemApiCaching {
 		}
 
 		if ( ! $use_cache ) {
-			return $method[0]->$method[1]($params);
+			return call_user_func( [ $method[0], $method[1] ], $params );
 		}
 
 		$uid = $this->unique_id( $params );
 		$cached = $this->get_from_cache( $uid );
 		if ( $cached === false ) {
-			$cached = $method[0]->$method[1]($params);
+			$cached = call_user_func( [ $method[0], $method[1] ], $params );
 			$this->set_to_cache( $uid, $cached, $expiration );
 		}
 
