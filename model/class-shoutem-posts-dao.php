@@ -22,6 +22,7 @@
 require_once plugin_dir_path( __FILE__ ) . 'dao-util.php';
 
 class ShoutemPostsDao extends ShoutemDao {
+	public $attachments;
 
 	public function __construct() {
 		parent::__construct();

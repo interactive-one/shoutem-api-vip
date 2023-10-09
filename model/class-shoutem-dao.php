@@ -17,6 +17,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemDao {
+	public $options;
 
 	public function __construct() {
 		global $shoutem_api;

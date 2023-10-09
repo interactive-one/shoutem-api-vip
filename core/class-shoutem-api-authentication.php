@@ -19,8 +19,6 @@
 class ShoutemApiCredentials {
 	public $data;
 	public $session_id;
-	public $session_id_header;
-	public $encryptor;
 
 	function __construct( $data, $session_id ) {
 		$this->data = $data;
@@ -44,6 +42,8 @@ class ShoutemApiCredentials {
 }
 
 class ShoutemApiAuthentication {
+	public $session_id_header;
+	public $encryptor;
 
 	function __construct( $encryption_key ) {
 		$this->session_id_header = 'shoutem_api_session_id';

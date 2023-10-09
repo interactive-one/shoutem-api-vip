@@ -6,6 +6,7 @@ require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-events-manager-dao.php
 	 * Multiplexed State pattern. See this->providers for a list of states.
 	 */
 class ShoutemEventsDao extends ShoutemDao {
+	public $providers;
 
 	public function __construct() {
 		// list of supported providers

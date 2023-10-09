@@ -22,6 +22,7 @@ require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-flagallery-dao.php';
 
 
 class ShoutemPhotosDao extends ShoutemDao {
+	public $providers;
 
 	public function __construct() {
 		/*

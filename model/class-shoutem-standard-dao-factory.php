@@ -34,6 +34,22 @@ require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-protectediframe-dao.ph
 require_once plugin_dir_path( __FILE__ ) . 'class-shoutem-embedoverrides-dao.php';
 
 class ShoutemStandardDaoFactory {
+	public $posts_dao;
+	public $posts_comments_dao;
+	public $users_dao;
+	public $events_dao;
+	public $photos_dao;
+	public $ngg_dao;
+	public $flagallery_dao;
+	public $smg_dao;
+	public $podpress_dao;
+	public $powerpress_dao;
+	public $viper_dao;
+	public $twitter_embed_dao;
+	public $brightcove_embed_dao;
+	public $protectediframe_embed_dao;
+	public $embedoverrides_dao;
+	public $plugin_integration_daos;
 
 	function __construct() {
 		$this->posts_dao = new ShoutemPostsDao();

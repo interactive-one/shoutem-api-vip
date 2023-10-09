@@ -3,6 +3,7 @@
  * This class is designed to work with NextGenGallery Wordpress plugin.
  */
 class ShoutemNGGDao extends ShoutemDao {
+	public $attachments;
 
 	function attach_to_hooks() {
 		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );

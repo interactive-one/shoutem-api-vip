@@ -17,6 +17,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemViperDao extends ShoutemDao {
+	public $attachments;
 
 	public function attach_to_hooks() {
 		if ( isset( $GLOBALS['VipersVideoQuicktags'] ) ) {
