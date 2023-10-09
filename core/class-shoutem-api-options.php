@@ -17,6 +17,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemApiOptions {
+	public $shoutem_api;
 
 	var $shoutem_options_name = 'shoutem_api_options';
 

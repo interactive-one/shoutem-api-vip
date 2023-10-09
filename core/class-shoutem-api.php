@@ -19,6 +19,14 @@
 define( 'SHOUTEM_API_SUMMARY_LENGTH', 50 );
 
 class ShoutemApi {
+	public $base_dir;
+	public $api_version;
+	public $shoutem_options;
+	public $authentication;
+	public $dao_factory;
+	public $request;
+	public $response;
+	public $caching;
 
 	function __construct( $base_dir, $shoutem_plugin_file ) {
 		$this->base_dir = $base_dir;

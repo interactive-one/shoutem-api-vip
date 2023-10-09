@@ -17,6 +17,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemUsersDao {
+  public $session_id_header;
 
 	function __construct() {
 		$this->session_id_header = 'shoutem_api_session_id';

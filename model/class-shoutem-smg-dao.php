@@ -6,6 +6,7 @@
 require_once plugin_dir_path( __FILE__ ) . 'dao-util.php';
 
 class ShoutemSMGDao extends ShoutemDao {
+	public $attachments;
 
 	function attach_to_hooks() {
 		remove_action( 'shoutem_get_post_start',array( $this, 'on_shoutem_post_start' ) );

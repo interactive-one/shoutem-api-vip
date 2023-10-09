@@ -44,6 +44,9 @@ class AesEncryptor {
 }
 
 class ShoutemApiEncryption {
+	public $key;
+	public $encryptor;
+
 	function __construct( $key ) {
 		$this->key = $key;
 		$this->encryptor = new AesEncryptor();
