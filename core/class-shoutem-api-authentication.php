@@ -17,6 +17,10 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemApiCredentials {
+	public $data;
+	public $session_id;
+	public $session_id_header;
+	public $encryptor;
 
 	function __construct( $data, $session_id ) {
 		$this->data = $data;

@@ -18,6 +18,7 @@
 */
 
 class ShoutemApiResponse {
+	public $base_url;
 
 	function __construct( $base_url ) {
 		$this->base_url = $base_url;

@@ -17,6 +17,10 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class ShoutemApiRequest {
+	public $dao_factory;
+	public $params;
+	public $credentials;
+
 	function __construct( $dao_factory ) {
 		$this->dao_factory = $dao_factory;
 		// Fetching all the params, it can be GET/POST request depends on API client app
