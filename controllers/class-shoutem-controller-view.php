@@ -88,17 +88,17 @@ class ShoutemControllerView {
 		}
 
 		if ( string_ends_with( $name, 'able' ) ) {
-			$value = (boolean) $value;
+			$value = (bool) $value;
 			return;
 		}
 
 		if ( strpos( $name, 'allowed' ) !== false ) {
-			$value = (boolean) $value;
+			$value = (bool) $value;
 			return;
 		}
 
 		if ( strpos( $name, 'approved' ) !== false ) {
-			$value = (boolean) $value;
+			$value = (bool) $value;
 			return;
 		}
 
